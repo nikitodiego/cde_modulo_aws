@@ -128,10 +128,10 @@ Se edita el role de la función Lambda para que tenga los permisos necesarios:
             "Effect": "Allow",
             "Action": [
 		        "kinesis:DescribeStream",
-                "kinesis:GetShardIterator",
+                	"kinesis:GetShardIterator",
 		        "kinesis:GetRecords",
-                "dynamodb:BatchWriteItem",
-                "dynamodb:PutItem",
+                	"dynamodb:BatchWriteItem",
+                	"dynamodb:PutItem",
 		        "sns:Publish"
             ],
             "Resource": "*"
@@ -171,4 +171,4 @@ La conexión se establece mediante una función lambda, en la cual se configura 
 
 ## Conclusiones
 
-Se desarrolló una arquitectura completamente serverless (despliegue, persistencia y acceso a los datos).
+Se desarrolló una arquitectura completamente serverless en cuanto a despliegue, persistencia y acceso a los datos.
