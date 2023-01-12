@@ -36,21 +36,21 @@ Se crea un repositorio privado en ECR.
 Luego, ubicados en el directorio del Dockerfile, se aplican los comandos para subir la imagen (view push commands en la consola de AWS).
 
 Se autoriza el cliente de Docker para acceder al repositorio: 
-
+```bash
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin XXXXX.dkr.ecr.us-east-1.amazonaws.com
-
+```
 Se realiza el build:
-
+```bash
 docker build -t flask-app-repo .
-
+```
 Se tagea la imagen:
-
+```bash
 docker tag flask-app-repo:latest XXXXX.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest
-
+```
 Se pushea la imagen:
-
+```bash
 docker push XXXXX.dkr.ecr.us-east-1.amazonaws.com/flask-app-repo:latest
-
+```
 Luego pasamos a ECS. 
 
 Se crea un cluster de tipo "Networking only" y una VPC en caso de no tener una previamente configurada.
@@ -119,7 +119,7 @@ Se edita el role de la función Lambda para que tenga los permisos necesarios:
             "Action": [
                 "logs:CreateLogStream",
                 "logs:PutLogEvents",
-		        "logs:CreateLogGroup"
+		"logs:CreateLogGroup"
             ],
             "Resource": "*"
         },
@@ -127,12 +127,12 @@ Se edita el role de la función Lambda para que tenga los permisos necesarios:
             "Sid": "VisualEditor1",
             "Effect": "Allow",
             "Action": [
-		        "kinesis:DescribeStream",
-                	"kinesis:GetShardIterator",
-		        "kinesis:GetRecords",
-                	"dynamodb:BatchWriteItem",
-                	"dynamodb:PutItem",
-		        "sns:Publish"
+		"kinesis:DescribeStream",
+                "kinesis:GetShardIterator",
+		"kinesis:GetRecords",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:PutItem",
+		"sns:Publish"
             ],
             "Resource": "*"
         }
